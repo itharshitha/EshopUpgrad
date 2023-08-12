@@ -1,7 +1,7 @@
 # upGrad-Eshop-Application
 Final project containing Backend Starter Code and Frontend Assignment using ReactJS
 
-# Users for evaluation/testing
+## Users for evaluation/testing
 - Admin User :
 ```bash
   Username: admin@gmail.com
