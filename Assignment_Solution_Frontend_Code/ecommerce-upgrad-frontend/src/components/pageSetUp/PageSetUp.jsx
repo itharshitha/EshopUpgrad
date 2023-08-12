@@ -13,16 +13,19 @@ import {useContext, useState} from "react";
 import AppBarSearch from "../appBarSearch/AppBarSearch";
 import {BrowserRouter as Router, Link, Navigate, Route, Routes} from "react-router-dom";
 import Grid from '@mui/material/Grid';
+import Home from "../home/Home";
 import Login from "../login/Login";
 import SignUp from "../signup/SignUp";
 import Footer from "../footer/Footer";
 import ErrorPage from "../errorPage/ErrorPage";
 import Logout from "../logout/Logout";
 import useAuthentication from "../../hooks/useAuthentication";
-import {createProduct, modifyProduct} from "../../api";
-import BroadcastMessage from "../broadcastMessage/BroadcastMessage";
-import Home from "../home/Home";
 import ProtectedRoute from "../protectedRoute/ProtectedRoute";
+import ProductPage from "../productPage/ProductPage";
+import {createProduct, modifyProduct} from "../../api";
+import ProductDetails from "../productDetails/ProductDetails";
+import PlaceOrder from "../placeOrder/PlaceOrder";
+import BroadcastMessage from "../broadcastMessage/BroadcastMessage";
 
 const PageSetUp = () => {
 	const [anchorElNav, setAnchorElNav] = useState(null);
@@ -212,7 +215,48 @@ const PageSetUp = () => {
 								<SignUp/>
 							}
 						/>
-
+						<Route
+							path="/product/add"
+							element={
+								<ProtectedRoute role={["ADMIN"]}>
+									<ProductPage
+										mode={"CREATE"}
+										buttonText="SAVE PRODUCT"
+										headingText="Add Product"
+										callbackFunction={createProduct}
+									/>
+								</ProtectedRoute>
+							}
+						/>
+						<Route
+							path="/product/modify"
+							element={
+								<ProtectedRoute role={["ADMIN"]}>
+									<ProductPage
+										mode={"MODIFY"}
+										buttonText="MODIFY PRODUCT"
+										headingText="Modify Product"
+										callbackFunction={modifyProduct}
+									/>
+								</ProtectedRoute>
+							}
+						/>
+						<Route
+							path="/product/view"
+							element={
+								<ProtectedRoute >
+									<ProductDetails	/>
+								</ProtectedRoute>
+							}
+						/>
+						<Route
+							path="/product/order"
+							element={
+								<ProtectedRoute >
+									<PlaceOrder	/>
+								</ProtectedRoute>
+							}
+						/>
 						<Route
 							path="*"
 							element={
