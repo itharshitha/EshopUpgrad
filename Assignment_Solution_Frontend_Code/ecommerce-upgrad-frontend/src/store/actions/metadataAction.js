@@ -40,3 +40,10 @@ export const setSortBy = (sortBy) => {
 		sortBy: sortBy,
 	}
 };
+
+export const clearAllMetadata = () => {
+	//Note: for clearing filter
+	return {
+		type: "CLEAR_ALL",
+	}
+};
