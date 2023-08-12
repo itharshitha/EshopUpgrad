@@ -22,7 +22,7 @@ import Logout from "../logout/Logout";
 import useAuthentication from "../../hooks/useAuthentication";
 import ProtectedRoute from "../protectedRoute/ProtectedRoute";
 import ProductPage from "../productPage/ProductPage";
-import {createProduct, modifyProduct} from "../../api";
+import {createProduct, modifyProduct} from "../../api/productAPIs";
 import ProductDetails from "../productDetails/ProductDetails";
 import PlaceOrder from "../placeOrder/PlaceOrder";
 import BroadcastMessage from "../broadcastMessage/BroadcastMessage";
