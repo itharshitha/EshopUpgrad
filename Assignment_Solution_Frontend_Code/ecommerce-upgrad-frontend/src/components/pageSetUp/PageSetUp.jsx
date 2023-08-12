@@ -11,7 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import {ShoppingCart} from "@mui/icons-material";
 import {useContext, useState} from "react";
 import AppBarSearch from "../appBarSearch/AppBarSearch";
-import {BrowserRouter as Router, Link, Route, Routes} from "react-router-dom";
+import {BrowserRouter as Router, Link, Navigate, Route, Routes} from "react-router-dom";
 import Grid from '@mui/material/Grid';
 import Login from "../login/Login";
 import SignUp from "../signup/SignUp";
@@ -21,6 +21,8 @@ import Logout from "../logout/Logout";
 import useAuthentication from "../../hooks/useAuthentication";
 import {createProduct, modifyProduct} from "../../api";
 import BroadcastMessage from "../broadcastMessage/BroadcastMessage";
+import Home from "../home/Home";
+import ProtectedRoute from "../protectedRoute/ProtectedRoute";
 
 const PageSetUp = () => {
 	const [anchorElNav, setAnchorElNav] = useState(null);
@@ -184,7 +186,20 @@ const PageSetUp = () => {
 			<Container maxWidth={false} sx={{marginBottom: "30px", marginTop: "85px"}}>
 				<Grid container spacing={2} sx={{paddingTop: "24px"}}>
 					<Routes>
-
+						<Route
+							path="/"
+							element={
+								<Navigate to="/home" />
+							}
+						/>
+						<Route
+							path="/home"
+							element={
+								<ProtectedRoute>
+									<Home/>
+								</ProtectedRoute>
+							}
+						/>
 						<Route
 							path="/login"
 							element={
