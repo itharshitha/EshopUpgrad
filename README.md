@@ -19,3 +19,4 @@ To accomodate above changes, during live class "Assignment Walkthrough - React J
 
 ## Folder Locations
 - Backend Starter Code is located in [Backend_Starter_Code](https://github.com/meetsandesh/upGrad-Eshop-Application/tree/main/Backend_Starter_Code) folder
+- Assignment Solution is located in [Assignment_Solution_Frontend_Code](https://github.com/meetsandesh/upGrad-Eshop-Application/tree/main/Assignment_Solution_Frontend_Code/ecommerce-upgrad-frontend) folder
