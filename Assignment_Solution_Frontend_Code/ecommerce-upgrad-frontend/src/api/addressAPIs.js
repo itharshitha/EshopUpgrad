@@ -1,4 +1,6 @@
 export const fetchAllAddresses = (accessToken) => {
+	//Note: we are returning promise so that we can resolve it by using appropriate data type like json or text
+	//caller of the function should only be concerned with returned data on success or failure message
 	let promiseResolveRef = null;
 	let promiseRejectRef = null;
 	let promise = new Promise((resolve, reject) => {
@@ -34,6 +36,8 @@ export const fetchAllAddresses = (accessToken) => {
 };
 
 export const createAddress = (requestJson, accessToken) => {
+	//Note: we are returning promise so that we can resolve it by using appropriate data type like json or text
+	//caller of the function should only be concerned with returned data on success or failure message
 	let promiseResolveRef = null;
 	let promiseRejectRef = null;
 	let promise = new Promise((resolve, reject) => {

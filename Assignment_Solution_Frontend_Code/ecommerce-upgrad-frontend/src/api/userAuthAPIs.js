@@ -1,4 +1,6 @@
 export const doLogin = (email, password) => {
+	//Note: we are returning promise so that we can resolve it by using appropriate data type like json or text
+	//caller of the function should only be concerned with returned data on success or failure message
 	let promiseResolveRef = null;
 	let promiseRejectRef = null;
 	let promise = new Promise((resolve, reject) => {
@@ -48,6 +50,8 @@ export const doLogin = (email, password) => {
 };
 
 export const doSignup = (requestJson) => {
+	//Note: we are returning promise so that we can resolve it by using appropriate data type like json or text
+	//caller of the function should only be concerned with returned data on success or failure message
 	let promiseResolveRef = null;
 	let promiseRejectRef = null;
 	let promise = new Promise((resolve, reject) => {
