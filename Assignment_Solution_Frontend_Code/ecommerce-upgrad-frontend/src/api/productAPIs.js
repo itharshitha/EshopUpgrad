@@ -174,7 +174,6 @@ export const viewProduct = (id, accessToken) => {
 	}).then((response) => {
 		response.json().then((json) => {
 			if(response.ok) {
-				debugger;
 				promiseResolveRef({
 					value: json,
 					response: response,
