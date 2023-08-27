@@ -30,7 +30,7 @@ const CreatableSelect = ({...props}) => {
 				}
 				return filtered;
 			}}
-			onBlur={(event) => {
+			onBlur={() => {
 				props.onBlur(selectedValue);
 			}}
 			selectOnFocus
