@@ -10,8 +10,9 @@ import useAuthentication from "../../hooks/useAuthentication";
 import {createAddress, fetchAllAddresses} from "../../api/addressAPIs";
 import {FormControl, InputLabel, Select} from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
-import useServices from "../../hooks/useServices";
 import {useNavigate} from "react-router-dom";
+import Alert from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
 
 const Address = ({callbackFunction, address}) => {
 
@@ -65,9 +66,16 @@ const Address = ({callbackFunction, address}) => {
 	const {AuthCtx} = useAuthentication();
 	const {loggedInUserId, accessToken, isAccessTokenValid, logout} = useContext(AuthCtx);
 	const [addressList, setAddressList] = useState([]);
-	const {ServicesCtx} = useServices();
-	const {broadcastMessage} = useContext(ServicesCtx);
 	const navigate = useNavigate();
+	const [showInfo, setShowInfo] = useState(false);
+	const [showMessage, setShowMessage] = useState("");
+	const [showMessageLevel, setShowMessageLevel] = useState("error");
+
+	let hideAndResetMessage = () => {
+		setShowInfo(false);
+		setShowMessage("");
+		setShowMessageLevel("error");
+	};
 
 	let validateAndPersistData = () => {
 		setBusy(true);
@@ -94,16 +102,22 @@ const Address = ({callbackFunction, address}) => {
 		if(validAddress) {
 			if(isAccessTokenValid()) {
 				createAddress(requestJson, accessToken).then(() => {
-					broadcastMessage("Address saved successfully.", "success");
+					setShowInfo(true);
+					setShowMessage("Address saved successfully.");
+					setShowMessageLevel("success");
 					setBusy(false);
 					setFormData(initialState);
 					initDropdown();
 				}).catch(json => {
-					broadcastMessage(json.reason, "error");
+					setShowInfo(true);
+					setShowMessage(json.reason);
+					setShowMessageLevel("error");
 					setBusy(false);
 				});
 			} else {
-				broadcastMessage("Session expired. Please login again!", "info");
+				setShowInfo(true);
+				setShowMessage("Session expired. Please login again!");
+				setShowMessageLevel("info");
 				logout().then(() => {
 					navigate("/login");
 				});
@@ -241,12 +255,14 @@ const Address = ({callbackFunction, address}) => {
 				setAddressList([]);
 			});
 		} else {
-			broadcastMessage("Session expired. Please login again!", "info");
+			setShowInfo(true);
+			setShowMessage("Session expired. Please login again!");
+			setShowMessageLevel("info");
 			logout().then(() => {
 				navigate("/login");
 			});
 		}
-	}, [accessToken, isAccessTokenValid, broadcastMessage, navigate, logout]);
+	}, [accessToken, isAccessTokenValid, navigate, logout]);
 
 	useEffect(() => {
 		initDropdown();
@@ -443,6 +459,16 @@ const Address = ({callbackFunction, address}) => {
 			>
 				<CircularProgress color="inherit"/>
 			</Backdrop>
+			<Snackbar
+				anchorOrigin={{vertical: "top", horizontal: "right"}}
+				open={showInfo}
+				autoHideDuration={4000}
+				onClose={() => hideAndResetMessage()}
+			>
+				<Alert onClose={() => hideAndResetMessage()} severity={showMessageLevel} sx={{width: '100%'}}>
+					{showMessage}
+				</Alert>
+			</Snackbar>
 		</Box>
 	);
 };
