@@ -21,13 +21,14 @@ export const doLogin = (email, password) => {
 	}).then((response) => {
 		response.json().then((json) => {
 			if(response.ok) {
-				let decoded = jwt_decode(json.token);
+				let token = response.headers.get("x-auth-token");
+				let decoded = jwt_decode(token);
 				promiseResolveRef({
-					username: email,
-					accessToken: json.token,
+					username: json.email,
+					accessToken: token,
 					accessTokenTimeout: decoded.exp * 1000, //convert to epoch
 					roles: json.roles,
-					userId: json.userId,
+					userId: json.id,
 					response: response,
 				});
 			} else {
