@@ -1,3 +1,5 @@
+//Component for showing list of all products
+
 import {initCatalog} from "../../store/actions/metadataAction";
 import {connect} from "react-redux";
 import ProductCard from "../productCard/ProductCard";
@@ -66,6 +68,7 @@ const ProductListing = ({mode, productList, sortBy, category, reFetchAllData}) =
 						return 0;
 					}
 				} else if (s === "NEWEST") {
+					//NOTE: PLEASE NOTE THAT CREATION DATE OR MODIFICATION DATE IS NOT RECEIVED FROM SERVER, HENCE "NEWEST" CRITERIA WON't WORK
 					let aTime = new Date(a.lastUpdated);
 					let bTime = new Date(b.lastUpdated);
 					if(aTime < bTime) {

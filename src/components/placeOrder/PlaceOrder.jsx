@@ -1,3 +1,5 @@
+//Order placement sequence
+
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import {Step, StepLabel, Stepper} from "@mui/material";

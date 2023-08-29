@@ -1,3 +1,5 @@
+//Fancy text box for searching products by name after user has logged in
+
 import SearchIcon from '@mui/icons-material/Search';
 import {useState} from "react";
 import {alpha, FormControl, InputAdornment, OutlinedInput} from "@mui/material";

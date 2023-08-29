@@ -1,3 +1,5 @@
+//Component for creating new options if it doesn't exist in existing array
+
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';

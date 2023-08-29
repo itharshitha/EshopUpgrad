@@ -1,3 +1,5 @@
+//Page for showing product details at the time of placing order
+
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import {Card, CardContent, useTheme} from "@mui/material";

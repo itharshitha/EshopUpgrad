@@ -1,3 +1,5 @@
+//Logout button component
+
 import Button from "@mui/material/Button";
 import {useNavigate} from "react-router-dom";
 import useAuthentication from "../../hooks/useAuthentication";

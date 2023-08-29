@@ -1,3 +1,5 @@
+//Sign Up Page for registering regular users/customers
+
 import Grid from "@mui/material/Grid";
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';

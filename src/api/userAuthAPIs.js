@@ -1,3 +1,5 @@
+//Rest APIs for user authentication and registration
+
 import jwt_decode from "jwt-decode";
 
 export const doLogin = (email, password) => {
