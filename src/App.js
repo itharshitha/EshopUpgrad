@@ -1,3 +1,5 @@
+import React, {Component} from "react";
+
 import './App.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import PageSetUp from "./components/pageSetUp/PageSetUp";
